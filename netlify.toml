@@ -1,0 +1,8 @@
+[build]
+  publish = "site"
+
+# Optional: CORS/headers tweaks if needed for wasm or workers
+# [[headers]]
+#   for = "/*"
+#   [headers.values]
+#     Cross-Origin-Resource-Policy = "cross-origin"

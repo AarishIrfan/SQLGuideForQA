@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SQL Playground — Learn & Practice</title>
+  <meta name="description" content="Interactive SQL learning playground in your browser powered by SQLite (sql.js).">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Crect width='256' height='256' rx='48' fill='%231a73e8'/%3E%3Ctext x='50%25' y='56%25' dominant-baseline='middle' text-anchor='middle' font-size='140' font-family='monospace' fill='white'%3ES%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="stylesheet" href="./styles.css">
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.10.2/sql-wasm.js"></script>
+  <script defer src="./app.js"></script>
+</head>
+<body>
+  <header class="app-header">
+    <div class="brand">
+      <div class="logo">🗄️</div>
+      <div class="titles">
+        <h1>SQL Playground</h1>
+        <p class="subtitle">Learn SQL by running queries in your browser</p>
+      </div>
+    </div>
+    <div class="header-actions">
+      <button id="reset-db" class="secondary" title="Recreate the demo database from scratch">Reset DB</button>
+      <button id="show-schema" class="secondary" title="Show database schema">Schema</button>
+      <button id="share-link" class="secondary" title="Share your current query via URL">Share</button>
+      <a id="deploy-netlify" class="link" href="https://app.netlify.com/drop" target="_blank" rel="noopener">Deploy</a>
+    </div>
+  </header>
+
+  <main class="layout">
+    <aside class="sidebar" aria-label="Lessons">
+      <div class="sidebar-header">
+        <input id="lesson-search" class="search" type="search" placeholder="Search commands..." aria-label="Search lessons">
+      </div>
+      <nav id="lesson-list" class="lesson-list" aria-label="SQL commands"></nav>
+    </aside>
+
+    <section class="workbench">
+      <div class="editor-toolbar">
+        <div class="toolbar-left">
+          <button id="load-example" class="secondary">Load Example</button>
+        </div>
+        <div class="toolbar-right">
+          <button id="run-query" class="primary">Run (Ctrl/Cmd+Enter)</button>
+        </div>
+      </div>
+      <div class="editor-panel">
+        <textarea id="sql-editor" spellcheck="false" placeholder="Write SQL here. Example: SELECT * FROM employees;" aria-label="SQL editor"></textarea>
+      </div>
+      <div class="results-panel" id="results" aria-live="polite">
+        <div class="results-empty">Run a query to see results</div>
+      </div>
+    </section>
+
+    <aside class="details" aria-label="Lesson details">
+      <div id="lesson-detail" class="lesson-detail">
+        <h2>Welcome</h2>
+        <p>Select a SQL topic on the left to see an explanation and a runnable example. Use Reset DB at any time to restore the dataset.</p>
+        <div class="tip">Tip: You can run multiple statements at once. Only SELECT statements return tables; other statements will show an execution message.</div>
+      </div>
+      <div class="schema" id="schema"></div>
+    </aside>
+  </main>
+
+  <footer class="app-footer">
+    <span>Powered by SQLite via sql.js (WebAssembly). No server required.</span>
+    <a href="https://sql.js.org/" target="_blank" rel="noopener">Docs</a>
+  </footer>
+</body>
+</html>
